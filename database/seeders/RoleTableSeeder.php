@@ -32,7 +32,7 @@ class RoleTableSeeder extends Seeder
             'mobile' => $facker->phoneNumber,
             'email_verified_at' => Carbon::now(),
             'password' => bcrypt('123123123'),
-            'status' => 1
+            'status' => 1 
         ]);
         $admin->attachRole($adminRole);
 
