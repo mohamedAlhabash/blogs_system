@@ -1,17 +1,6 @@
-/**
-* Setup:
-* 1- Create MySlugHelper.php inside app/Helper/MySlugHelper.php
-* 2- Edit config/sluggable.php:
-* replace line ('method' => null,) with ('method' => [App\Helper\MySlugHelper::class, 'slug'],)
-*/
-
-
 <?php
-//namespace App\Helper;
 
-use App\Helper;
-// use App\Helper\MySlugHelper;
-// use Illuminate\Support\Facades\App;
+namespace App\Helper;
 
 class MySlugHelper
 {
@@ -82,4 +71,3 @@ class MySlugHelper
         return mb_strtolower(preg_replace(array_keys($map), array_values($map), $string));
     }
 }
-

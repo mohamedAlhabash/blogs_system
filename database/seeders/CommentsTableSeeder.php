@@ -20,7 +20,7 @@ class CommentsTableSeeder extends Seeder
     {
         $faker = Factory::create();
         $users = collect(User::where('id','>','2')->get()->modelKeys());
-        $posts = collect(Post::WherePostType('post')->WhereStatus('1')->WhereCommentAble('1')->get());
+        $posts = collect(Post::wherePostType('post')->whereStatus('1')->whereCommentAble('1')->get());
     for($i=0 ; $i<100 ; $i++){
         Comment::create([
             'name' => $faker->name,

@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Faker\Factory;
-use App\Models\Post;
-use App\Models\Category;
+// use App\Models\Post;
+// use App\Models\Category;
+use App\Models\Page;
 use Illuminate\Database\Seeder;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -20,7 +21,7 @@ class PagesTableSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        Post::create([
+        Page::create([
             'title'        => 'About Us',
             'description'  => $faker->paragraph,
             'status'       => 1,
@@ -29,7 +30,7 @@ class PagesTableSeeder extends Seeder
             'user_id'      => 1,
             'category_id'  => 1,
         ]);
-        Post::create([
+        Page::create([
             'title'        => 'Our Vision',
             'description'  => $faker->paragraph,
             'status'       => 1,
