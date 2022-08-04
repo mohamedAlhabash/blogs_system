@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
 class ConfirmPasswordController extends Controller
@@ -36,5 +37,14 @@ class ConfirmPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    public function showConfirmForm()
+    {
+        // return view('auth.passwords.confirm');
+        return view('backend.auth.passwords.confirm');
+    }
+    protected function resetPasswordConfirmationTimeout(Request $request)
+    {
+        $request->session()->put('backend.auth.password_confirmed_at', time());
     }
 }
