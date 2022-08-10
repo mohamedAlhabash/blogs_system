@@ -1,7 +1,7 @@
 <?php
 
 // use App\Http\Controllers\Frontend\LoginController;
-use Frontend\Auth\LoginController;
+// use Frontend\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -10,6 +10,8 @@ use App\Http\Controllers\Frontend\Auth\RegisterController;
 use App\Http\Controllers\Frontend\Auth\VerificationController;
 use App\Http\Controllers\Frontend\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\Auth\ForgotPasswordController;
+use App\Http\Controllers\Frontend\Auth\LoginController;
+
 // use App\Http\Controllers\Backend\IndexController;
 // use Illuminate\Support\Facades\Auth;
 // use App\Http\Controllers\HomeController;
@@ -25,27 +27,29 @@ use App\Http\Controllers\Frontend\Auth\ForgotPasswordController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-// Route::get('/',                                 ['as' => 'frontend.index',      'uses' => 'Frontend\IndexController@index']);
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/',[IndexController::class,'index'])->name('frontend.index');
 
 // //Authentication Routes...
 // Route::get('/login',                            ['as' => 'frontend.show_login_form', 'uses' => 'LoginController@showLoginForm']);
-// Route::post('login',                            ['as' => 'frontend.login', LoginController::class ,'login']);
-// Route::post('logout',                           ['as' => 'frontend.logout', LoginController::class,'logout']);
-// Route::get('register',                          [RegisterController::class,'showRegistrationForm']);
-// Route::post('register',                         [RegisterController::class ,'register']);
-// Route::get('password/reset',                    [ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
-// Route::post('password/email',                   [ForgotPasswordController::class,'sendResetLinkEmail']);
-// Route::get('password/reset/{token}',            [ResetPasswordController::class,'showResetForm']);
-// Route::post('password/reset',                   [ResetPasswordController::class,'reset']);
-// Route::get('email/verify',                      [VerificationController::class,'show']);
-// Route::get('/email/verify/{id}/{hash}',         [VerificationController::class,'verify']);
-// Route::post('email/resend',                     [VerificationController::class,'resend']);
+Route::get('/login',                            [LoginController::class,'showLoginForm'])->name('frontend.show_login_form');
+Route::post('login',                            [LoginController::class ,'login'])->name('frontend.login');
+Route::post('logout',                           [LoginController::class,'logout'])->name('frontend.logout');
+Route::get('register',                          [RegisterController::class,'showRegistrationForm'])->name('frontend.show_register_form');
+Route::post('register',                         [RegisterController::class ,'create'])->name('frontend.register');
+Route::get('password/reset',                    [ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
+Route::post('password/email',                   [ForgotPasswordController::class,'sendResetLinkEmail']);
+Route::get('password/reset/{token}',            [ResetPasswordController::class,'showResetForm']);
+Route::post('password/reset',                   [ResetPasswordController::class,'reset']);
+Route::get('email/verify',                      [VerificationController::class,'show']);
+Route::get('/email/verify/{id}/{hash}',         [VerificationController::class,'verify']);
+Route::post('email/resend',                     [VerificationController::class,'resend']);
 
