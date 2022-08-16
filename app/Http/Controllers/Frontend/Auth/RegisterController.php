@@ -76,11 +76,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
+            'user_image'=>null,
         ]);
 
         if(isset($data['user_image'])){
             if($image = $data['user_image']){
-                $fileName = Str::slug($data['username']). '.' . $image->getClientOriginalExtension();
+                $fileName = Str::slug($data['username']). '.' .$image->getClientOriginalExtension();
                 $path = public_path('/assets/users'.$fileName);
                 Image::make($image->getRealPath())->resize(300,300,function($constraint){
                     $constraint->aspectRatio();

@@ -40,16 +40,16 @@ Route::get('/',[IndexController::class,'index'])->name('frontend.index');
 
 // //Authentication Routes...
 // Route::get('/login',                            ['as' => 'frontend.show_login_form', 'uses' => 'LoginController@showLoginForm']);
-Route::get('/login',                            [LoginController::class,'showLoginForm'])->name('frontend.show_login_form');
-Route::post('login',                            [LoginController::class ,'login'])->name('frontend.login');
-Route::post('logout',                           [LoginController::class,'logout'])->name('frontend.logout');
-Route::get('register',                          [RegisterController::class,'showRegistrationForm'])->name('frontend.show_register_form');
-Route::post('register',                         [RegisterController::class ,'create'])->name('frontend.register');
+Route::get('/login',                            [LoginController::class,'showLoginForm'])->name('show_login_form');
+Route::post('login',                            [LoginController::class ,'login'])->name('login');
+Route::post('logout',                           [LoginController::class,'logout'])->name('logout');
+Route::get('register',                          [RegisterController::class,'showRegistrationForm'])->name('show_register_form');
+Route::post('register',                         [RegisterController::class ,'create'])->name('register');
 Route::get('password/reset',                    [ForgotPasswordController::class,'showLinkRequestForm'])->name('password.request');
-Route::post('password/email',                   [ForgotPasswordController::class,'sendResetLinkEmail']);
-Route::get('password/reset/{token}',            [ResetPasswordController::class,'showResetForm']);
-Route::post('password/reset',                   [ResetPasswordController::class,'reset']);
-Route::get('email/verify',                      [VerificationController::class,'show']);
-Route::get('/email/verify/{id}/{hash}',         [VerificationController::class,'verify']);
-Route::post('email/resend',                     [VerificationController::class,'resend']);
+Route::post('password/email',                   [ForgotPasswordController::class,'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}',            [ResetPasswordController::class,'showResetForm'])->name('password.reset');
+Route::post('password/reset',                   [ResetPasswordController::class,'reset'])->name('password.update');
+Route::get('email/verify',                      [VerificationController::class,'show'])->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}',         [VerificationController::class,'verify'])->name('verification.verify');
+Route::post('email/resend',                     [VerificationController::class,'resend'])->name('verification.resend');
 
